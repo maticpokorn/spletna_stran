@@ -1,14 +1,13 @@
-numBalls = 100
-width = 600
-height = 400
-minBallSize = 5
-maxBallSize = 10
+numBalls = 500
+minBallSize = 20
+maxBallSize = 50
 fr = 30
-speed = 0.1
+speed = 0.03
+mouseWasClicked = false
+dir = 1
 
 function setup() {
-    let myCanvas = createCanvas(width, height);
-    myCanvas.parent('myContainer');
+    createCanvas(600, 400);
     frameRate(30)
     x = new Array(numBalls)
     y = new Array(numBalls)
@@ -25,12 +24,17 @@ function draw() {
     fill('red')
     for (i = 0; i < numBalls; i++) {
         ellipse(x[i], y[i], r[i], r[i])
-        y[i] += r[i] * speed
-        if (y[i] > height) {
-            x[i] = map(Math.random(), 0, 1, 0, width)
-            y[i] = 0
+        //if (!mouseWasClicked) {
+        y[i] += r[i] * speed * dir
+        if (y[i] - r[i] * dir > height) {
             r[i] = map(Math.random(), 0, 1, minBallSize, maxBallSize)
+            x[i] = map(Math.random(), 0, 1, 0, width)
+            y[i] = - r[i]
+
+            //}
         }
     }
-
+}
+function mouseClicked() {
+    dir = -dir
 }
