@@ -6,7 +6,8 @@ speed = 0.03
 mouseWasClicked = false
 
 function setup() {
-    createCanvas(600, 400);
+    let myCanvas = createCanvas(600, 400);
+    myCanvas.parent('myContainer');
     frameRate(30)
     x = new Array(numBalls)
     y = new Array(numBalls)
