@@ -7,8 +7,7 @@ fr = 30
 speed = 0.1
 
 function setup() {
-    let myCanvas = createCanvas(width, height);
-    myCanvas.parent('myContainer');
+    createCanvas(width, height);
     frameRate(30)
     x = new Array(numBalls)
     y = new Array(numBalls)
